@@ -1,5 +1,3 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:flutter/material.dart';
 import 'package:keyboard_overlay/src/focus_node_overlay.dart';
 import 'package:keyboard_overlay/src/keyboard_overlay_manager.dart';
@@ -9,7 +7,7 @@ mixin HandleFocusNodesOverlayMixin<T extends StatefulWidget> on State<T> {
   List<TextEditingController> controllers = <TextEditingController>[];
   double get keyboardDy => MediaQuery.of(context).viewInsets.bottom;
 
-  FocusNode GetFocusNodeOverlay<T extends Widget>(
+  FocusNode getFocusNodeOverlay<T extends Widget>(
       {required T child, TextEditingController? controller}) {
     FocusNodeOverlay focusNode =
         KeyboardOverlayManager().registerFocusNode(context, child: child);

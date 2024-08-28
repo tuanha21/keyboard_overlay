@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({super.key, this.title});
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -30,12 +30,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title ?? ''),
       ),
       body: Center(
         child: Text(
           'Go to next screen',
-          style: Theme.of(context).textTheme.bodyText1,
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class SecondPage extends StatefulWidget {
-  SecondPage({Key key}) : super(key: key);
+  SecondPage({super.key});
   @override
   _SecondPageState createState() => _SecondPageState();
 }
@@ -60,15 +60,15 @@ class _SecondPageState extends State<SecondPage>
     with HandleFocusNodesOverlayMixin {
   //Use Mixin HandleFocusNodesOverlayMixin
 
-  FocusNodeOverlay _nodeCats;
-  FocusNodeOverlay _nodeDogs;
-  FocusNodeOverlay _nodePassword;
+  late FocusNodeOverlay _nodeCats;
+  late FocusNodeOverlay _nodeDogs;
+  late FocusNodeOverlay _nodePassword;
 
   @override
   void initState() {
     super.initState();
 
-    _nodeCats = GetFocusNodeOverlay(
+    _nodeCats = getFocusNodeOverlay(
       // call method from Mixin GetFocusNodeOverlay
       child: TopKeyboardUtil(
         DoneButtonIos(
@@ -77,9 +77,9 @@ class _SecondPageState extends State<SecondPage>
           platforms: ['android', 'ios'],
         ),
       ),
-    );
+    ) as FocusNodeOverlay;
 
-    _nodeDogs = GetFocusNodeOverlay(
+    _nodeDogs = getFocusNodeOverlay(
         child: TopKeyboardUtil(
           SliderComponent(
             controller: (double value) {
@@ -88,14 +88,14 @@ class _SecondPageState extends State<SecondPage>
             onSubmitted: () => _nextField(_nodeDogs, _nodePassword),
           ),
         ),
-        controller: TextEditingController());
+        controller: TextEditingController()) as FocusNodeOverlay;
 
-    _nodePassword = GetFocusNodeOverlay(
+    _nodePassword = getFocusNodeOverlay(
         child: SpecialDismissable(
           onOkButton: () => print(_nodePassword.controller.text),
           title: 'SPECIAL',
         ),
-        controller: TextEditingController());
+        controller: TextEditingController()) as FocusNodeOverlay;
   }
 
   @override

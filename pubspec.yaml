@@ -4,10 +4,9 @@ version: 1.0.0
 homepage: https://github.com/emanuel-braz/keyboard_overlay
 
 environment:
-  sdk: '>=2.15.0 <3.0.0'
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
-  keyboard_visibility: 0.5.6
   flutter:
     sdk: flutter
 
@@ -15,4 +14,3 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-flutter:

@@ -1,8 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:keyboard_overlay/src/focus_node_overlay.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:keyboard_visibility/keyboard_visibility.dart';
+import 'package:keyboard_overlay/src/keyboard_visibility.dart';
 
 class KeyboardOverlayManager {
   late KeyboardVisibilityNotification visibility;
@@ -40,7 +39,7 @@ class KeyboardOverlayManager {
           );
         });
 
-        overlayState?.insert(overlayEntry!);
+        overlayState.insert(overlayEntry!);
       });
     }
   }
