@@ -77,7 +77,7 @@ class _SecondPageState extends State<SecondPage>
           platforms: ['android', 'ios'],
         ),
       ),
-    ) as FocusNodeOverlay;
+    );
 
     _nodeDogs = getFocusNodeOverlay(
         child: TopKeyboardUtil(
@@ -88,14 +88,14 @@ class _SecondPageState extends State<SecondPage>
             onSubmitted: () => _nextField(_nodeDogs, _nodePassword),
           ),
         ),
-        controller: TextEditingController()) as FocusNodeOverlay;
+        controller: TextEditingController());
 
     _nodePassword = getFocusNodeOverlay(
         child: SpecialDismissable(
           onOkButton: () => print(_nodePassword.controller.text),
           title: 'SPECIAL',
         ),
-        controller: TextEditingController()) as FocusNodeOverlay;
+        controller: TextEditingController());
   }
 
   @override
